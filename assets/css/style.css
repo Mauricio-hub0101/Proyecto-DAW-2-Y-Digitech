@@ -1,0 +1,73 @@
+/* Variables de color para fácil personalización */
+:root {
+    --primary-color: #0d6efd;
+    --dark-bg: #121212;
+    --card-bg: #1e1e1e;
+    --text-muted: #a0a0a0;
+}
+
+body {
+    background-color: #f8f9fa; /* Fondo gris muy claro para que resalten las tarjetas */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar personalizada */
+.navbar {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.navbar-brand {
+    letter-spacing: 1px;
+}
+
+/* Tarjetas de productos (Cards) */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+/* Badges de categoría */
+.badge {
+    padding: 0.5em 0.8em;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+
+/* Botones con estilo tech */
+.btn-primary {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+}
+
+/* Pie de página */
+footer {
+    border-top: 4px solid var(--primary-color);
+}
+
+/* Estilo específico para los iconos de servicios */
+.display-4 {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .display-4 {
+    transform: scale(1.2) rotate(5deg);
+}
