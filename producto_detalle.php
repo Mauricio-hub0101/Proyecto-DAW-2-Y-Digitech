@@ -37,30 +37,32 @@
 
     <div class="row">
         <div class="col-md-6">
-            <img src="https://via.placeholder.com/600x400?text=<?php echo urlencode($producto['nombre']); ?>" 
-                 class="img-fluid rounded shadow" alt="<?php echo $producto['nombre']; ?>">
+            <div class="card shadow-sm border-0">
+                <img src="https://via.placeholder.com/600x400?text=<?php echo urlencode($producto['nombre']); ?>" 
+                    class="img-fluid product-detail-img" alt="<?php echo $producto['nombre']; ?>">
+            </div>
         </div>
 
-        <div class="col-md-6">
-            <h1 class="fw-bold"><?php echo $producto['nombre']; ?></h1>
-            <span class="badge bg-primary mb-3"><?php echo $producto['nombre_cat']; ?></span>
-            
-            <h2 class="text-primary my-4"><?php echo number_format($producto['precio'], 2, ',', '.'); ?>€</h2>
-            
-            <h5>Descripción:</h5>
-            <p class="text-muted"><?php echo $producto['descripcion']; ?></p>
+    <div class="col-md-6">
+        <h1 class="fw-bold"><?php echo $producto['nombre']; ?></h1>
+        <span class="badge bg-primary mb-3 badge-cat"><?php echo $producto['nombre_cat']; ?></span>
+    
+        <h2 class="product-price my-4"><?php echo number_format($producto['precio'], 2, ',', '.'); ?>€</h2>
+    
+        <h5>Descripción:</h5>
+        <p class="text-muted"><?php echo $producto['descripcion']; ?></p>
 
-            <hr>
+        <hr>
 
-            <div class="my-4">
-                <p><strong>Estado:</strong> 
-                    <?php if ($producto['stock'] > 0): ?>
-                        <span class="text-success">● En Stock (<?php echo $producto['stock']; ?> unidades)</span>
-                    <?php else: ?>
-                        <span class="text-danger">● Agotado</span>
-                    <?php endif; ?>
-                </p>
-            </div>
+        <div class="my-4">
+            <p><strong>Estado:</strong> 
+                <?php if ($producto['stock'] > 0): ?>
+                <span class="stock-status stock-in small">● En Stock (<?php echo $producto['stock']; ?> unidades)</span>
+                <?php else: ?>
+                <span class="stock-status stock-out small">● Agotado</span>
+                <?php endif; ?>
+            </p>
+        </div>
 
             <div class="d-grid gap-2">
                 <?php if ($producto['stock'] > 0): ?>
