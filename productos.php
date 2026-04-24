@@ -34,7 +34,8 @@
                                 <h4 class="text-primary mb-3"><?php echo number_format($producto['precio'], 2, ',', '.'); ?>€</h4>
                                 <div class="d-grid gap-2">
                                     <a href="producto_detalle.php?id=<?php echo $producto['id_producto']; ?>" class="btn btn-outline-dark">Ver Detalles</a>
-                                    <button class="btn btn-primary">Añadir al Carrito</button>
+                                    <a href="carrito_agregar.php?id=<?php echo $producto['id_producto']; ?>" class="btn btn-primary">Añadir al carrito</a>
+                                    <!-- <button class="btn btn-primary">Añadir al Carrito</button> -->
                                 </div>
                             </div>
                         </div>

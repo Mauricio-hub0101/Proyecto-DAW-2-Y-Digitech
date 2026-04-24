@@ -1,17 +1,18 @@
-/* Variables de color para fácil personalización */
+/* 1. CONFIGURACIÓN GLOBAL Y VARIABLES */
 :root {
     --primary-color: #0d6efd;
     --dark-bg: #121212;
     --card-bg: #1e1e1e;
     --text-muted: #a0a0a0;
+    --success-color: #198754;
 }
 
 body {
-    background-color: #f8f9fa; /* Fondo gris muy claro para que resalten las tarjetas */
+    background-color: #f8f9fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Navbar personalizada */
+/* 2. NAVEGACIÓN (HEADER) */
 .navbar {
     border-bottom: 2px solid var(--primary-color);
 }
@@ -20,11 +21,29 @@ body {
     letter-spacing: 1px;
 }
 
-/* Tarjetas de productos (Cards) */
+/* Icono y contador del carrito */
+.nav-cart-link {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.badge-notify {
+    font-size: 0.65rem;
+    margin-top: 5px;
+    background-color: #dc3545; /* Rojo */
+    border: 1px solid white;
+}
+
+.nav-user-dropdown {
+    margin-left: 1rem;
+}
+
+/* 3. COMPONENTES COMUNES (TARJETAS Y BOTONES) */
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
     overflow: hidden;
+    border: none !important; /* Limpieza para un look más moderno */
 }
 
 .card:hover {
@@ -32,13 +51,19 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
 }
 
-.card-img-top {
+/* Forzar tamaño de imagen en catálogo */
+.product-img-container {
     height: 200px;
-    object-fit: cover;
+    overflow: hidden;
     background-color: #eee;
 }
 
-/* Badges de categoría */
+.product-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .badge {
     padding: 0.5em 0.8em;
     font-weight: 500;
@@ -46,7 +71,6 @@ body {
     font-size: 0.7rem;
 }
 
-/* Botones con estilo tech */
 .btn-primary {
     border-radius: 8px;
     font-weight: 600;
@@ -58,12 +82,63 @@ body {
     box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
 }
 
-/* Pie de página */
+/* 4. FICHA DE DETALLE DEL PRODUCTO */
+.product-detail-img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    background-color: #fff;
+    transition: transform 0.5s ease;
+}
+
+.product-detail-img:hover {
+    transform: scale(1.02);
+}
+
+.product-price {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.stock-status {
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+}
+
+.stock-in { background-color: #d1e7dd; color: #0f5132; }
+.stock-out { background-color: #f8d7da; color: #842029; }
+
+/* 5. CARRITO Y PÁGINA DE ÉXITO */
+.cart-table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.success-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.icon-success-check {
+    font-size: 5rem;
+    color: var(--success-color);
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+.card-success {
+    border-top: 5px solid var(--success-color) !important;
+}
+
+/* 6. OTROS (SERVICIOS Y FOOTER) */
 footer {
     border-top: 4px solid var(--primary-color);
 }
 
-/* Estilo específico para los iconos de servicios */
 .display-4 {
     transition: transform 0.3s ease;
 }
