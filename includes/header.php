@@ -74,6 +74,14 @@ if (isset($_SESSION['carrito'])) {
                         </li>
                     <?php endif; ?>
                 </ul>
+                <form class="d-flex ms-lg-3 my-2 my-lg-0" action="<?php echo $root; ?>productos.php" method="GET">
+                    <div class="input-group">
+                        <input class="form-control border-primary" type="search" name="q" placeholder="Buscar productos..." aria-label="Buscar" required>
+                        <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                    </div>
+                </form>
+                
+            </div> </div> </nav>
             </div>
         </div>
     </nav>
