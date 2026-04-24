@@ -146,3 +146,9 @@ footer {
 .card:hover .display-4 {
     transform: scale(1.2) rotate(5deg);
 }
+
+/* Colores para los estados de los pedidos */
+.badge-pagado { background-color: #198754; color: white; }
+.badge-pendiente { background-color: #ffc107; color: #000; }
+.badge-enviado { background-color: #0dcaf0; color: #000; }
+.badge-cancelado { background-color: #dc3545; color: white; }

@@ -28,19 +28,19 @@ if (isset($_SESSION['carrito'])) {
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+        
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="productos.php">Catálogo</a></li>
                     <li class="nav-item"><a class="nav-link" href="servicios.php">Servicios</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacto.php">Contacto</a></li>
-                    
+                
                     <li class="nav-item ms-lg-2">
-                        <a class="nav-link position-relative" href="carrito.php">
+                        <a class="nav-link position-relative nav-cart-link" href="carrito.php">
                             <i class="bi bi-cart3 fs-5"></i>
                             <?php if ($conteo_carrito > 0): ?>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem; margin-top: 5px">
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-notify">
                                     <?php echo $conteo_carrito; ?>
                                 </span>
                             <?php endif; ?>
@@ -52,13 +52,17 @@ if (isset($_SESSION['carrito'])) {
                             <a class="nav-link dropdown-toggle btn btn-outline-primary text-white px-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle"></i> <?php echo $_SESSION['username']; ?>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="perfil.php">Mi Perfil</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="perfil.php"><i class="bi bi-person me-2"></i>Mi Perfil</a></li>
+                            
+                                <li><a class="dropdown-item" href="mis_pedidos.php"><i class="bi bi-bag-check me-2"></i>Mis Pedidos</a></li>
+                            
                                 <?php if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] == 1): ?>
-                                    <li><a class="dropdown-item" href="admin/dashboard.php">Panel Admin</a></li>
+                                    <li><a class="dropdown-item" href="admin/dashboard.php"><i class="bi bi-shield-lock me-2"></i>Panel Admin</a></li>
                                 <?php endif; ?>
+                            
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="logout.php">Cerrar Sesión</a></li>
+                                <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión</a></li>
                             </ul>
                         </li>
                     <?php else: ?>
