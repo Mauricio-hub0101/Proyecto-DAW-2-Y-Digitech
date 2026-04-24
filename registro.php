@@ -6,18 +6,14 @@
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-5">
-            <?php if(isset($_GET['registro']) && $_GET['registro'] == 'exito'): ?>
-                <div class="alert alert-success">¡Registro completado! Ya puedes iniciar sesión.</div>
-            <?php endif; ?>
-
-            <?php if(isset($_GET['error']) && $_GET['error'] == '1'): ?>
-                <div class="alert alert-danger">Usuario o contraseña incorrectos.</div>
-            <?php endif; ?>
-
             <div class="card shadow border-0">
                 <div class="card-body p-4">
-                    <h2 class="text-center mb-4">Iniciar Sesión</h2>
-                    <form action="procesar_login.php" method="POST">
+                    <h2 class="text-center mb-4">Crear Cuenta</h2>
+                    <form action="procesar_registro.php" method="POST" id="formRegistro">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de Usuario</label>
+                            <input type="text" name="username" class="form-control" required>
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">Correo Electrónico</label>
                             <input type="email" name="email" class="form-control" required>
@@ -27,11 +23,11 @@
                             <input type="password" name="password" class="form-control" required>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Entrar</button>
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
                         </div>
                     </form>
                     <p class="text-center mt-3">
-                        ¿Aún no tienes cuenta? <a href="registro.php">Regístrate aquí</a>
+                        ¿Ya tienes cuenta? <a href="login.php">Inicia sesión aquí</a>
                     </p>
                 </div>
             </div>
