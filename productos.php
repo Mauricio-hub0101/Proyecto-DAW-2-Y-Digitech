@@ -1,19 +1,39 @@
 <?php 
     // 1. Incluimos la conexión y el encabezado
-    // Nota: Como estamos en la raíz, la ruta es includes/...
     require_once 'includes/conexion.php'; 
     include 'includes/header.php'; 
 
-    // 2. Consulta SQL para traer los productos y el nombre de su categoría
-    $sql = "SELECT p.*, c.nombre_cat 
-            FROM Productos p 
-            INNER JOIN Categorias c ON p.id_categoria = c.id_categoria";
+    // --- LÓGICA DEL BUSCADOR ---
+    $busqueda = isset($_GET['q']) ? mysqli_real_escape_string($conexion, $_GET['q']) : '';
+
+    if ($busqueda != '') {
+        // AHORA TAMBIÉN BUSCAMOS EN LA CATEGORÍA (c.nombre_cat)
+        $sql = "SELECT p.*, c.nombre_cat 
+                FROM Productos p 
+                INNER JOIN Categorias c ON p.id_categoria = c.id_categoria
+                WHERE p.nombre LIKE '%$busqueda%' 
+                   OR p.descripcion LIKE '%$busqueda%'
+                   OR c.nombre_cat LIKE '%$busqueda%'"; 
+        
+        $titulo_catalogo = "Resultados para: '" . htmlspecialchars($busqueda) . "'";
+        $subtitulo = "Hemos encontrado estos productos para ti";
+    } else {
+        // Si no hay búsqueda, mostramos todos los productos con su categoría
+        $sql = "SELECT p.*, c.nombre_cat 
+                FROM Productos p 
+                INNER JOIN Categorias c ON p.id_categoria = c.id_categoria";
+        
+        $titulo_catalogo = "Catálogo de Componentes";
+        $subtitulo = "Explora nuestra selección de hardware de alta calidad";
+    }
+
     $resultado = mysqli_query($conexion, $sql);
+    // ---------------------------
 ?>
 
 <div class="container my-5">
-    <h2 class="text-center mb-4">Catálogo de Componentes</h2>
-    <p class="text-muted text-center">Explora nuestra selección de hardware de alta calidad</p>
+    <h2 class="text-center mb-4"><?php echo $titulo_catalogo; ?></h2>
+    <p class="text-muted text-center"><?php echo $subtitulo; ?></p>
 
     <div class="row g-4 mt-2">
         <?php if (mysqli_num_rows($resultado) > 0): ?>
@@ -35,7 +55,6 @@
                                 <div class="d-grid gap-2">
                                     <a href="producto_detalle.php?id=<?php echo $producto['id_producto']; ?>" class="btn btn-outline-dark">Ver Detalles</a>
                                     <a href="carrito_agregar.php?id=<?php echo $producto['id_producto']; ?>" class="btn btn-primary">Añadir al carrito</a>
-                                    <!-- <button class="btn btn-primary">Añadir al Carrito</button> -->
                                 </div>
                             </div>
                         </div>
@@ -48,8 +67,10 @@
                 </div>
             <?php endwhile; ?>
         <?php else: ?>
-            <div class="col-12 text-center">
-                <p class="alert alert-warning">No se encontraron productos en la base de datos.</p>
+            <div class="col-12 text-center my-5">
+                <i class="bi bi-search display-1 text-muted mb-3 d-block"></i>
+                <h4 class="text-muted">No hemos encontrado ningún producto.</h4>
+                <p>Prueba con otras palabras clave o <a href="productos.php" class="text-decoration-none">vuelve al catálogo completo</a>.</p>
             </div>
         <?php endif; ?>
     </div>
