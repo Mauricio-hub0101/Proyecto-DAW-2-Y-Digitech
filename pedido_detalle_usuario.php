@@ -17,7 +17,7 @@ if (mysqli_num_rows($res_verificar) == 0) {
 }
 
 // Obtener los productos del pedido
-$sql_detalles = "SELECT d.*, p.nombre, p.imagen 
+$sql_detalles = "SELECT d.*, p.nombre 
                  FROM Detalles_Pedidos d 
                  JOIN Productos p ON d.id_producto = p.id_producto 
                  WHERE d.id_pedido = $id_pedido";
