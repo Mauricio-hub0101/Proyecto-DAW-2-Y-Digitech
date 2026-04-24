@@ -6,7 +6,7 @@ include '../includes/header.php';
 $id_pedido = $_GET['id'] ?? 0;
 
 // Obtener datos del pedido y del cliente (JOIN)
-$sql_pedido = "SELECT p.*, u.username, u.email 
+$sql_pedido = "SELECT p.*, u.nombre, u.email 
                FROM Pedidos p 
                JOIN Usuarios u ON p.id_usuario = u.id_usuario 
                WHERE p.id_pedido = $id_pedido";
@@ -65,7 +65,7 @@ $res_detalles = mysqli_query($conexion, $sql_detalles);
                     <h5 class="mb-0">Información del Cliente</h5>
                 </div>
                 <div class="card-body">
-                    <p><strong>Usuario:</strong> <?php echo $pedido['username']; ?></p>
+                    <p><strong>Usuario:</strong> <?php echo $pedido['nombre']; ?></p>
                     <p><strong>Email:</strong> <?php echo $pedido['email']; ?></p>
                     <hr>
                     <p><strong>Fecha:</strong> <?php echo date('d/m/Y H:i', strtotime($pedido['fecha'])); ?></p>

@@ -4,7 +4,7 @@ require_once '../includes/admin_auth.php';
 include '../includes/header.php';
 
 // Consulta para ver TODOS los pedidos con el nombre del usuario
-$sql = "SELECT p.*, u.username 
+$sql = "SELECT p.*, u.nombre 
         FROM Pedidos p 
         JOIN Usuarios u ON p.id_usuario = u.id_usuario 
         ORDER BY p.fecha DESC";
