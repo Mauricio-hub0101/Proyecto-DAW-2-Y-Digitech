@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card shadow-sm border-0">
-                <img src="https://via.placeholder.com/600x400?text=<?php echo urlencode($producto['nombre']); ?>" 
+                <img src="assets/img/productos/<?php echo $producto['imagen']; ?>" class="img-fluid product-detail-img" alt="<?php echo $producto['nombre']; ?>">
                     class="img-fluid product-detail-img" alt="<?php echo $producto['nombre']; ?>">
             </div>
         </div>

@@ -40,7 +40,7 @@
             <?php while($producto = mysqli_fetch_assoc($resultado)): ?>
                 <div class="col-md-4 col-lg-3">
                     <div class="card h-100 shadow-sm border-0">
-                        <img src="https://via.placeholder.com/300x200?text=Hardware" class="card-img-top" alt="<?php echo $producto['nombre']; ?>">
+                        <img src="assets/img/productos/<?php echo $producto['imagen']; ?>" class="card-img-top" alt="<?php echo $producto['nombre']; ?>">
                         
                         <div class="card-body d-flex flex-column">
                             <span class="badge bg-info text-dark mb-2 align-self-start">
