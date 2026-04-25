@@ -51,7 +51,7 @@ $res_detalles = mysqli_query($conexion, $sql_detalles);
                     <tr>
                         <td>
                             <div class="d-flex align-middle">
-                                <img src="assets/img/productos/<?php echo $item['imagen']; ?>" class="cart-table-img me-3" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                                <img src="assets/img/productos/<?php echo $item['imagen']; ?>" class="cart-table-img me-3">
                                 <span class="align-self-center"><?php echo $item['nombre']; ?></span>
                             </div>
                         </td>

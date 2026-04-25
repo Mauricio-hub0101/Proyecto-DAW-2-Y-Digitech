@@ -6,7 +6,7 @@ $id_pedido = $_GET['id'] ?? 0;
 
 <div class="container my-5 text-center">
     <div class="card shadow p-5">
-        <i class="bi bi-check-circle text-success" style="font-size: 5rem;"></i>
+        <i class="bi bi-check-circle text-success icon-huge"></i>
         <h1 class="mt-4">¡Gracias por tu compra!</h1>
         <p class="lead">Tu pedido **#<?php echo $id_pedido; ?>** ha sido procesado con éxito.</p>
         <div class="mt-4">

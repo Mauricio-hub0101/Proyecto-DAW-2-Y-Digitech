@@ -40,7 +40,7 @@ $resultado = mysqli_query($conexion, $sql);
                             <td>
                                 <div class="d-flex align-items-center">
                                     <img src="../assets/img/productos/<?php echo $prod['imagen']; ?>" 
-                                         alt="" class="rounded me-3" style="width: 40px; height: 40px; object-fit: cover;">
+                                         alt="" class="rounded me-3 thumb-sm">
                                     <span class="fw-bold"><?php echo $prod['nombre']; ?></span>
                                 </div>
                             </td>
