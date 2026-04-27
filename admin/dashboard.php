@@ -44,7 +44,7 @@ $stock_bajo = mysqli_fetch_assoc(mysqli_query($conexion, "SELECT COUNT(*) as tot
                     <div class="display-4 text-info mb-3"><i class="bi bi-people"></i></div>
                     <h5 class="card-title">Usuarios</h5>
                     <p class="text-muted">Gestión de clientes registrados.</p>
-                    <button class="btn btn-outline-info w-100" disabled>Próximamente</button>
+                    <a href="usuarios.php" class="btn btn-outline-primary">Gestionar Usuarios</a>
                 </div>
             </div>
         </div>
