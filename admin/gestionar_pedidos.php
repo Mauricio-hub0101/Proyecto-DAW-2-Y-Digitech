@@ -34,7 +34,7 @@ $resultado = mysqli_query($conexion, $sql);
                         <?php while ($ped = mysqli_fetch_assoc($resultado)): ?>
                         <tr>
                             <td class="ps-4">#<?php echo $ped['id_pedido']; ?></td>
-                            <td class="fw-bold"><?php echo $ped['username']; ?></td>
+                            <td class="fw-bold"><?php echo $ped['nombre']; ?></td>
                             <td><?php echo date('d/m/Y H:i', strtotime($ped['fecha'])); ?></td>
                             <td><?php echo number_format($ped['total'], 2, ',', '.'); ?>€</td>
                             <td>

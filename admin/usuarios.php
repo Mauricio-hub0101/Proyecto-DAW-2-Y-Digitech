@@ -26,7 +26,12 @@ $roles_lista = mysqli_fetch_all($roles_res, MYSQLI_ASSOC);
 <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2><i class="bi bi-people-fill text-primary me-2"></i>Gestión de Usuarios</h2>
-        <a href="dashboard.php" class="btn btn-outline-light btn-sm">Volver al Panel</a>
+        <div class="d-print-none">
+            <button onclick="window.print()" class="btn btn-danger me-2">
+                <i class="bi bi-file-earmark-pdf-fill"></i>Generar PDF
+            </button>
+        </div>
+        <a href="dashboard.php" class="btn btn-outline-light btn-sm d-print-none">Volver al Panel</a>
     </div>
 
     <div class="card shadow-sm border-0">

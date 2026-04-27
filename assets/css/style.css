@@ -204,3 +204,60 @@ footer {
 .text-muted{
     color: var(--text-muted) !important;
 }
+
+/*estilo de la impresión pdf*/
+@media print {
+    /* 1. Fondo blanco y texto negro absoluto */
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    
+    /* 2. Ocultamos la interfaz web */
+    header, footer, .d-print-none, td:nth-child(5), th:nth-child(5), td:nth-child(6), th:nth-child(6) {
+        display: none !important;
+    }
+
+    /* 3. Limpieza extrema de tarjetas: sin sombras ni esquinas redondeadas */
+    .card, .table-responsive {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important; /* Adiós sombras */
+        border-radius: 0 !important; /* Esquinas totalmente rectas */
+    }
+
+    /* 4. Tabla estilo "Documento Oficial": Líneas negras finas y cerradas */
+    .table * {
+        color: #000000 !important;
+        border-collapse: collapse !important;
+        box-shadow: none !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Forzamos que las celdas tengan bordes finos, grises oscuros y unidos */
+    .table th, .table td {
+        border: 1px solid #444444 !important;
+        background-color: #ffffff !important;
+        padding: 8px !important; /* Espaciado uniforme */
+    }
+    
+    /* Cabecera de la tabla en gris muy suave, sin líneas naranjas */
+    .table-primary th, .table thead th {
+        background-color: #f0f0f0 !important;
+        color: #000000 !important;
+        border-bottom: 2px solid #000000 !important; /* Cierra la cabecera con una línea negra sólida */
+        font-weight: bold !important;
+    }
+
+    /* 5. Título del informe */
+    body::before {
+        content: "DIGITECH - INFORME OFICIAL DE SISTEMA";
+        display: block;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        color: #000000;
+        padding-bottom: 10px;
+    }
+}
