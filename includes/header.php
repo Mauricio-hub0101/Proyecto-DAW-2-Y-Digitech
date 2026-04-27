@@ -6,11 +6,15 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start(); 
 }
 
-$conteo_carrito = 0;
+$total_articulos = 0;
 if (isset($_SESSION['carrito'])) {
-    // Sumamos las cantidades de todos los productos en el carrito
-    foreach ($_SESSION['carrito'] as $cantidad) {
-        $conteo_carrito += $cantidad;
+    foreach ($_SESSION['carrito'] as $item) {
+        // Si es una caja antigua (array), sacamos su cantidad. Si es un número normal, lo sumamos tal cual.
+        if (is_array($item)) {
+            $total_articulos += (isset($item['cantidad']) ? $item['cantidad'] : 1);
+        } else {
+            $total_articulos += $item;
+        }
     }
 }
 ?>
@@ -24,7 +28,7 @@ if (isset($_SESSION['carrito'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="<?php echo $root; ?>assets/css/style.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
         <div class="container">
             <a class="navbar-brand fw-bold" href="<?php echo $root; ?>index.php">DIGI<span class="text-primary">TECH</span></a>
@@ -42,9 +46,9 @@ if (isset($_SESSION['carrito'])) {
                     <li class="nav-item ms-lg-2">
                         <a class="nav-link position-relative nav-cart-link" href="<?php echo $root; ?>carrito.php">
                             <i class="bi bi-cart3 fs-5"></i>
-                            <?php if ($conteo_carrito > 0): ?>
+                            <?php if ($total_articulos > 0): ?>
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-notify">
-                                    <?php echo $conteo_carrito; ?>
+                                    <?php echo $total_articulos; ?>
                                 </span>
                             <?php endif; ?>
                         </a>

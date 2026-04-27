@@ -1,15 +1,24 @@
+/* =========================================
+   DIGITECH - HOJA DE ESTILOS PRINCIPAL
+   ========================================= */
+
 /* 1. CONFIGURACIÓN GLOBAL Y VARIABLES */
 :root {
-    --primary-color: #0d6efd;
-    --dark-bg: #121212;
-    --card-bg: #1e1e1e;
-    --text-muted: #a0a0a0;
-    --success-color: #198754;
+    --primary-color: #ff6600; /* Naranja corporativo */
+    --dark-bg: #1a1c1f;       /* Gris oscuro azulado para fondos */
+    --card-bg: #25282c;       /* Gris ligeramente más claro para tarjetas */
+    --text-muted: #a0aab5;    /* Texto secundario legible */
+    --success-color: #00a950; /* Verde vibrante para el stock */
 }
 
 body {
-    background-color: #f8f9fa;
+    /* Cambiamos el fondo claro general por el oscuro para un Modo Oscuro total */
+    background-color: var(--dark-bg);
+    color: #ffffff; /* Texto principal en blanco */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* 2. NAVEGACIÓN (HEADER) */
@@ -21,7 +30,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* Icono y contador del carrito */
 .nav-cart-link {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -43,7 +51,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
     overflow: hidden;
-    border: none !important; /* Limpieza para un look más moderno */
+    border: none !important;
 }
 
 .card:hover {
@@ -51,17 +59,11 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
 }
 
-/* Forzar tamaño de imagen en catálogo */
-.product-img-container {
+/* Imagen principal de las tarjetas del catálogo */
+.card-img-top {
     height: 200px;
-    overflow: hidden;
-    background-color: #eee;
-}
-
-.product-img-container img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
+    background-color: #eee;
 }
 
 .badge {
@@ -72,14 +74,18 @@ body {
 }
 
 .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff !important;
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s;
 }
 
 .btn-primary:hover {
-    filter: brightness(1.2);
-    box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+    background-color: #e65c00; /* Un naranja un poco más oscuro al pasar el ratón */
+    border-color: #e65c00;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
 }
 
 /* 4. FICHA DE DETALLE DEL PRODUCTO */
@@ -110,33 +116,32 @@ body {
 .stock-in { background-color: #d1e7dd; color: #0f5132; }
 .stock-out { background-color: #f8d7da; color: #842029; }
 
-/* 5. CARRITO Y PÁGINA DE ÉXITO */
-.cart-table img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
+/* 5. CARRITO Y ESTADOS DE PEDIDO */
+.cart-table-img {
+    width: 60px; 
+    height: 60px; 
+    object-fit: cover; 
     border-radius: 8px;
 }
 
+.badge-pagado { background-color: #198754; color: white; }
+.badge-pendiente { background-color: #ffc107; color: #000; }
+.badge-enviado { background-color: #0dcaf0; color: #000; }
+.badge-cancelado { background-color: #dc3545; color: white; }
+
+/* 6. PÁGINA DE ÉXITO Y FOOTER */
 .success-container {
     max-width: 600px;
     margin: 0 auto;
-}
-
-.icon-success-check {
-    font-size: 5rem;
-    color: var(--success-color);
-    display: block;
-    margin-bottom: 1.5rem;
 }
 
 .card-success {
     border-top: 5px solid var(--success-color) !important;
 }
 
-/* 6. OTROS (SERVICIOS Y FOOTER) */
 footer {
     border-top: 4px solid var(--primary-color);
+    margin-top: auto;
 }
 
 .display-4 {
@@ -147,32 +152,32 @@ footer {
     transform: scale(1.2) rotate(5deg);
 }
 
-/* Colores para los estados de los pedidos */
-.badge-pagado { background-color: #198754; color: white; }
-.badge-pendiente { background-color: #ffc107; color: #000; }
-.badge-enviado { background-color: #0dcaf0; color: #000; }
-.badge-cancelado { background-color: #dc3545; color: white; }
-
-.cart-table-img {
-    width: 50px; 
-    height: 50px; 
-    object-fit: cover; 
-    border-radius: 5px;
-}
-
-/* Tamaños personalizados para iconos */
+/* 7. UTILIDADES GLOBALES (Clases de ayuda) */
 .icon-huge {
     font-size: 5rem;
+    display: block;
+    margin-bottom: 1.5rem;
 }
 
-/* Miniaturas pequeñas (perfiles o iconos de lista) */
 .thumb-sm {
     width: 40px;
     height: 40px;
     object-fit: cover;
 }
 
-.card-img-top{
-    height: 200px;
-    object-fit: cover;
+/* Forzar el color primario en textos y fondos de Bootstrap */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+.icon-lg{
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
 }

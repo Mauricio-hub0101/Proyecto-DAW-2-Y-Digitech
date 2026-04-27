@@ -39,7 +39,6 @@
         <div class="col-md-6">
             <div class="card shadow-sm border-0">
                 <img src="assets/img/productos/<?php echo $producto['imagen']; ?>" class="img-fluid product-detail-img" alt="<?php echo $producto['nombre']; ?>">
-                    class="img-fluid product-detail-img" alt="<?php echo $producto['nombre']; ?>">
             </div>
         </div>
 

@@ -1,4 +1,5 @@
-<footer class="bg-dark text-white mt-5 py-4">
+<script src="/digitech/assets/js/carrito_ajax.js"></script>
+<footer class="bg-dark text-white mt-5 py-4 mt-auto">
         <div class="container text-center">
             <div class="row">
                 <div class="col-md-4">
