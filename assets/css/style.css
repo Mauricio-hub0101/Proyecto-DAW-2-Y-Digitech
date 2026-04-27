@@ -48,22 +48,41 @@ body {
 
 /* 3. COMPONENTES COMUNES (TARJETAS Y BOTONES) */
 .card {
+    background-color: var(--card-bg) !important; /* El gris suave #25282c */
+    color: #ffffff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
     overflow: hidden;
     border: none !important;
 }
 
+/* Forzamos que el fondo de la zona de descripción y el pie también sean oscuros */
+.card-body, .card-footer {
+    background-color: transparent !important;
+    color: #ffffff;
+}
+
+/* Ajuste para el texto de la descripción dentro de la tarjeta */
+.card-text {
+    color: var(--text-muted) !important;
+}
+
 .card:hover {
     transform: translateY(-10px);
+    border-color: var(--primary-color) !important;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
+
+/* Si usas card-footer para el stock, asegúrate de que no tenga borde superior feo */
+.card-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 /* Imagen principal de las tarjetas del catálogo */
 .card-img-top {
     height: 200px;
     object-fit: cover;
-    background-color: #eee;
+    background-color: #efefef;
 }
 
 .badge {
@@ -180,4 +199,8 @@ footer {
     font-size: 3rem;
     display: block;
     margin-bottom: 1rem;
+}
+
+.text-muted{
+    color: var(--text-muted) !important;
 }

@@ -39,7 +39,7 @@ include 'includes/header.php';
     </div>
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold"><i class="bi bi-star-fill text-warning me-2"></i>Últimas Novedades</h2>
+        <h2 class="fw-bold"><i class="bi text-warning me-2"></i>Últimas Novedades</h2>
         <a href="productos.php" class="text-decoration-none text-primary fw-bold">Ver todos &rarr;</a>
     </div>
 
