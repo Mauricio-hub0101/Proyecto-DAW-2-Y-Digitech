@@ -1,7 +1,7 @@
 <?php
 // 1. Conexión y Cabeceras
 require_once '../includes/conexion.php';
-include '../includes/header.php'; // Ajusta la ruta si tu header está en otro sitio
+include '../includes/header.php'; // Ajusta la ruta si header está en otro sitio
 
 $mensaje = "";
 
@@ -14,29 +14,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stock = (int) $_POST['stock'];
     $id_categoria = (int) $_POST['id_categoria'];
 
-    // --- LÓGICA DE SUBIDA DE IMAGEN ---
-    $nombre_imagen = "default.png"; // Imagen por defecto si el usuario no sube nada
+    // Capturamos los datos de la categoría (puede venir del select o del input de texto)
+    $id_categoria = isset($_POST['id_categoria']) ? (int) $_POST['id_categoria'] : 0;
+    $nueva_categoria = trim($_POST['nueva_categoria']);
 
-    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-        $directorio_destino = "../assets/img/productos/";
+    // --- LÓGICA PARA CREAR CATEGORÍA SOBRE LA MARCHA ---
+    // Si el usuario escribió una categoría nueva, la creamos primero
+    if (!empty($nueva_categoria)) {
+        $nueva_cat_seguro = mysqli_real_escape_string($conexion, $nueva_categoria);
+        $sql_nueva_cat = "INSERT INTO categorias (nombre_cat) VALUES ('$nueva_cat_seguro')";
         
-        // Obtenemos la extensión (ej: jpg, png)
-        $extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
-        // Creamos un nombre único: timestamp + nombre limpio + extensión
-        $nombre_archivo = time() . "_" . preg_replace("/[^a-zA-Z0-9]/", "", $nombre) . "." . $extension;
-        $ruta_final = $directorio_destino . $nombre_archivo;
-
-        // Validar tipo de archivo por seguridad
-        $permitidos = ['jpg', 'jpeg', 'png', 'webp'];
-        if (in_array(strtolower($extension), $permitidos)) {
-            // Movemos el archivo de la carpeta temporal a la definitiva
-            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_final)) {
-                $nombre_imagen = $nombre_archivo;
-            } else {
-                $mensaje = "<div class='alert alert-danger'>Error al mover la imagen a la carpeta. Verifica los permisos.</div>";
-            }
+        if (mysqli_query($conexion, $sql_nueva_cat)) {
+            // Obtenemos el ID de la categoría que se acaba de crear
+            $id_categoria = mysqli_insert_id($conexion);
         } else {
-            $mensaje = "<div class='alert alert-warning'>Formato de imagen no permitido. Solo JPG, PNG o WEBP.</div>";
+            $mensaje = "<div class='alert alert-danger'>Error al crear la nueva categoría: " . mysqli_error($conexion) . "</div>";
+        }
+    }
+
+    // Validamos que tengamos un ID de categoría (ya sea del select o recién creado)
+    if ($id_categoria === 0 && empty($mensaje)) {
+        $mensaje = "<div class='alert alert-warning'>Por favor, selecciona una categoría o escribe el nombre para crear una nueva.</div>";
+    }
+
+    // --- LÓGICA DE SUBIDA DE IMAGEN ---
+    if (empty($mensaje)) {
+        $nombre_imagen = "default.png"; // Imagen por defecto si el usuario no sube nada
+
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
+            $directorio_destino = "../assets/img/productos/";
+        
+            // Obtenemos la extensión (ej: jpg, png)
+            $extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+            // Creamos un nombre único: timestamp + nombre limpio + extensión
+            $nombre_archivo = time() . "_" . preg_replace("/[^a-zA-Z0-9]/", "", $nombre) . "." . $extension;
+            $ruta_final = $directorio_destino . $nombre_archivo;
+
+            // Validar tipo de archivo por seguridad
+            $permitidos = ['jpg', 'jpeg', 'png', 'webp'];
+            if (in_array(strtolower($extension), $permitidos)) {
+                // Movemos el archivo de la carpeta temporal a la definitiva
+                if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_final)) {
+                    $nombre_imagen = $nombre_archivo;
+                } else {
+                    $mensaje = "<div class='alert alert-danger'>Error al mover la imagen a la carpeta. Verifica los permisos.</div>";
+                }
+            } else {
+                $mensaje = "<div class='alert alert-warning'>Formato de imagen no permitido. Solo JPG, PNG o WEBP.</div>";
+            }
         }
     }
 
@@ -52,6 +77,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $mensaje = "<div class='alert alert-danger'>Error en la base de datos: " . mysqli_error($conexion) . "</div>";
         }
     }
+}
+
+// 4. OPCIONES DEL MENÚ DESPLEGABLE DE CATEGORÍAS
+$opciones_categorias = "";
+$sql_categorias = "SELECT id_categoria, nombre_cat FROM categorias"; 
+$resultado_categorias = mysqli_query($conexion, $sql_categorias);
+
+if ($resultado_categorias && mysqli_num_rows($resultado_categorias) > 0) {
+    while($cat = mysqli_fetch_assoc($resultado_categorias)) {
+        $id = $cat['id_categoria'];
+        $nombre_cat = htmlspecialchars($cat['nombre_cat']);
+        $opciones_categorias .= "<option value='$id'>$nombre_cat</option>";
+    }
+} else {
+    $opciones_categorias = "<option value='' disabled>No hay categorías creadas</option>";
 }
 ?>
 
@@ -85,10 +125,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <label class="form-label fw-bold">Stock</label>
                                 <input type="number" name="stock" class="form-control" required>
                             </div>
+                            <!-- SECCIÓN DE CATEGORÍA MEJORADA -->
                             <div class="col-md-4 mb-3">
-                                <label class="form-label fw-bold">ID Categoría</label>
-                                <input type="number" name="id_categoria" class="form-control" placeholder="Ej: 1, 2, 3..." required>
+                                <label class="form-label fw-bold">Categoría</label>
+                                
+                                <!-- Desplegable para seleccionar una existente -->
+                                <select name="id_categoria" class="form-select border-secondary mb-2">
+                                    <option value="" selected>Selecciona una...</option>
+                                    <?php echo $opciones_categorias; ?>
+                                </select>
+                                
+                                <!-- Campo de texto para crear una nueva -->
+                                <input type="text" name="nueva_categoria" class="form-control border-success" placeholder="O crea una nueva...">
+                                <small class="text-muted d-block mt-1" style="font-size: 0.8em;">Si escribes una nueva, el menú superior se ignorará.</small>
                             </div>
+                            <!-- FIN SECCIÓN DE CATEGORÍA -->
                         </div>
                         
                         <div class="mb-4">

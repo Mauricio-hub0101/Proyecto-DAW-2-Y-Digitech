@@ -1,14 +1,16 @@
-# 🛒 DigiTech - Tienda de Componentes Informáticos
+# DigiTech - Tienda de Componentes Informáticos
 
-Bienvenido al repositorio de **DigiTech**, una plataforma web e-commerce desarrollada para la venta de componentes informáticos y hardware. Este proyecto ha sido creado como trabajo de curso para poner en práctica el desarrollo web Full-Stack.
+Bienvenido al repositorio de DigiTech, un ejemplo de plataforma web e-commerce desarrollada para la venta de componentes informáticos y hardware.
 
-## 🚀 Enlace al Proyecto (Demo Online)
+## Enlace al Proyecto (Demo Online)
 El proyecto se encuentra desplegado y totalmente funcional en el siguiente enlace:
-👉 **[PON AQUÍ TU ENLACE DE INFINITYFREE, ej: http://digitech-tienda.epizy.com]**
+http://digitech-msos.infinityfreeapp.com
+Derante la instalación, me percaté que necesitatis tener acceso al hosting (en mi caso
+infinityfree), pero para la creación del la cuenta utilice un correo personal. Supongo que en la presentación os lo podré mostar en persona.
 
 ---
 
-## 💻 Características Principales
+## Características Principales
 
 * **Catálogo de Productos:** Visualización de hardware organizado por categorías.
 * **Buscador Integrado:** Filtrado de productos por nombre, descripción o categoría.
@@ -19,7 +21,7 @@ El proyecto se encuentra desplegado y totalmente funcional en el siguiente enlac
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 * **Frontend:** HTML5, CSS3, JavaScript, Bootstrap 5, Bootstrap Icons.
 * **Backend:** PHP (Programación Orientada a Objetos y estructurada).
@@ -29,29 +31,28 @@ El proyecto se encuentra desplegado y totalmente funcional en el siguiente enlac
 
 ---
 
-## ⚙️ Instalación en Local (Para Evaluadores)
+## Instalación en Local
 
-Si deseas ejecutar este proyecto en un entorno local (como XAMPP o WAMP), sigue estos pasos:
+Si deseas ejecutar este proyecto en un entorno local, sigue estos pasos:
 
-1.  Clona o descarga este repositorio y coloca la carpeta `digitech` dentro de tu directorio `htdocs` (o `www`).
+1.  Clona o descarga este repositorio y coloca la carpeta `digitech` dentro de tu directorio `htdocs` o similar.
 2.  Abre tu gestor de base de datos local (phpMyAdmin o HeidiSQL) y crea una base de datos llamada `digitech_db`.
-3.  Importa el archivo **`[NOMBRE_DE_TU_ARCHIVO_SQL].sql`** que se incluye en la carpeta raíz del proyecto.
+3.  Importa el archivo **`digitech.sql`** que se incluye en la carpeta raíz del proyecto.
 4.  Abre el archivo `includes/conexion.php` y verifica que las credenciales coincidan con tu servidor local (normalmente usuario `root` y contraseña en blanco).
 5.  Abre tu navegador y entra en `http://localhost/digitech/`.
 
 ---
 
-## 🔐 Credenciales de Acceso (Pruebas)
+## Credenciales de Acceso (Pruebas)
 
 Para probar las funcionalidades completas del panel de administración, puedes utilizar la siguiente cuenta preconfigurada:
 
 * **Rol:** Administrador
-* **Email:** `[TU_CORREO_ADMIN_AQUI]`
-* **Contraseña:** `[TU_CONTRASEÑA_ADMIN_AQUI]`
+* **Email:** admin@digitech.com
+* **Contraseña:** admin
 
 ---
 
-## 👨‍💻 Autor
-* **[TU NOMBRE Y APELLIDOS AQUÍ]**
-* Estudiante de [NOMBRE DE TU CURSO / GRADO]
-* [AÑO ACADÉMICO]
+##  Autor
+* Mauricio Samuel Olivares Soliz
+* 2º DAW Y
