@@ -125,7 +125,6 @@ if ($resultado_categorias && mysqli_num_rows($resultado_categorias) > 0) {
                                 <label class="form-label fw-bold">Stock</label>
                                 <input type="number" name="stock" class="form-control" required>
                             </div>
-                            <!-- SECCIÓN DE CATEGORÍA MEJORADA -->
                             <div class="col-md-4 mb-3">
                                 <label class="form-label fw-bold">Categoría</label>
                                 
@@ -139,7 +138,6 @@ if ($resultado_categorias && mysqli_num_rows($resultado_categorias) > 0) {
                                 <input type="text" name="nueva_categoria" class="form-control border-success" placeholder="O crea una nueva...">
                                 <small class="text-muted d-block mt-1" style="font-size: 0.8em;">Si escribes una nueva, el menú superior se ignorará.</small>
                             </div>
-                            <!-- FIN SECCIÓN DE CATEGORÍA -->
                         </div>
                         
                         <div class="mb-4">
