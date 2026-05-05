@@ -45,11 +45,14 @@ Si deseas ejecutar este proyecto en un entorno local, sigue estos pasos:
 
 ## Credenciales de Acceso (Pruebas)
 
-Para probar las funcionalidades completas del panel de administración, puedes utilizar la siguiente cuenta preconfigurada:
+Para probar las funcionalidades completas del panel de administración, puedes utilizar las siguientes cuentas preconfiguradas (el rol de empleado existe, pero no tiene poder):
 
 * **Rol:** Administrador
 * **Email:** admin@digitech.com
 * **Contraseña:** admin
+* **Rol** CLiente
+* **Email** juan@gmail.com
+* **Contraseña** cliente
 
 ---
 
