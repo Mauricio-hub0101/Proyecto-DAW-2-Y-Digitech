@@ -24,8 +24,8 @@ infinityfree), pero para la creación del la cuenta utilice un correo personal. 
 ## Tecnologías Utilizadas
 
 * **Frontend:** HTML5, CSS3, JavaScript, Bootstrap 5, Bootstrap Icons.
-* **Backend:** PHP (Programación Orientada a Objetos y estructurada).
-* **Base de Datos:** MySQL (con arquitectura relacional e integridad referencial).
+* **Backend:** PHP.
+* **Base de Datos:** MySQL.
 * **Servidor de Desarrollo:** XAMPP (Apache + MariaDB).
 * **Despliegue:** InfinityFree (Hosting Linux).
 

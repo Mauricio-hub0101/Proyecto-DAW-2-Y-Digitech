@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/conexion.php'; // Ajusta la ruta si es necesario ('../includes/conexion.php')
+require_once 'includes/conexion.php';
 include 'includes/header.php'; 
 
 /** @var mysqli $conexion */

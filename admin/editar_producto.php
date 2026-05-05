@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                    stock = $stock, 
                    id_categoria = $id_cat";
 
-    // --- LÓGICA DE SUBIDA DE IMAGEN (OPCIONAL) ---
+    //  LÓGICA DE SUBIDA DE IMAGEN 
     // Comprobamos si el usuario ha seleccionado un archivo nuevo
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0 && !empty($_FILES['imagen']['name'])) {
         $directorio_destino = "../assets/img/productos/";
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if (in_array(strtolower($extension), $permitidos)) {
             if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_final)) {
-                // ¡AQUÍ ESTÁ LA MAGIA! Si la foto se sube bien, añadimos este trozo al UPDATE
+                // Si la foto se sube bien, añadimos este trozo al UPDATE
                 $sql_update .= ", imagen = '$nombre_archivo'";
             } else {
                 $error = "Error al mover la imagen a la carpeta.";

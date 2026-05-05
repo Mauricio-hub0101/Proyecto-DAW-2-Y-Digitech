@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_usuario = (int)$_POST['id_usuario'];
     $nuevo_rol = (int)$_POST['nuevo_rol'];
 
-    // Evitar que el admin se quite el rol de admin a sí mismo por error (opcional)
+    // Evitar que el admin se quite el rol de admin a sí mismo por error 
     if ($id_usuario == $_SESSION['user_id'] && $nuevo_rol != 1) {
         header("Location: usuarios.php?error=autocambio");
         exit;

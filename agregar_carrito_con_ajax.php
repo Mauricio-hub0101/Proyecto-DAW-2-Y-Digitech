@@ -13,7 +13,7 @@ if ($id_producto) {
         $_SESSION['carrito'] = [];
     }
 
-    // AÑADIR AL CARRITO (Versión compatible con números enteros)
+    // AÑADIR AL CARRITO (números enteros)
     // Si la variable es un array del intento anterior, la reseteamos a número
     if (isset($_SESSION['carrito'][$id_producto]) && is_array($_SESSION['carrito'][$id_producto])) {
         $_SESSION['carrito'][$id_producto] = 1; 

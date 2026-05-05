@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($usuario = mysqli_fetch_assoc($resultado)) {
         // Verificamos si la contraseña coincide con el hash
         if (password_verify($password, $usuario['password'])) {
-            // ¡Éxito! Guardamos datos clave en la sesión
+            // Guardamos los datos clave en la sesión
             $_SESSION['user_id'] = $usuario['id_usuario'];
             $_SESSION['username'] = $usuario['nombre'];
             $_SESSION['id_rol'] = $usuario['id_rol'];

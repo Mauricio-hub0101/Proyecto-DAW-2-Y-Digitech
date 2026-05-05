@@ -65,9 +65,9 @@
 
             <div class="d-grid gap-2">
                 <?php if ($producto['stock'] > 0): ?>
-                <a href="carrito_agregar.php?id=<?php echo $producto['id_producto']; ?>" class="btn btn-primary btn-lg">
-                    <i class="bi bi-cart-plus"></i> Añadir al carrito
-                </a>
+                <button type="button" data-id="<?php echo $producto['id_producto']; ?>" class="btn btn-primary w-100 btn-add-cart">
+                    <i class="bi bi-cart-plus me-1"></i>Añadir al carrito
+                </button>
 
                 <?php else: ?>
                     <button class="btn btn-secondary btn-lg" disabled>Agotado</button>

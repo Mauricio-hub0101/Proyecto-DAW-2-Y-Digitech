@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_categoria = isset($_POST['id_categoria']) ? (int) $_POST['id_categoria'] : 0;
     $nueva_categoria = trim($_POST['nueva_categoria']);
 
-    // --- LÓGICA PARA CREAR CATEGORÍA SOBRE LA MARCHA ---
+    // LÓGICA PARA CREAR CATEGORÍA SOBRE LA MARCHA
     // Si el usuario escribió una categoría nueva, la creamos primero
     if (!empty($nueva_categoria)) {
         $nueva_cat_seguro = mysqli_real_escape_string($conexion, $nueva_categoria);
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mensaje = "<div class='alert alert-warning'>Por favor, selecciona una categoría o escribe el nombre para crear una nueva.</div>";
     }
 
-    // --- LÓGICA DE SUBIDA DE IMAGEN ---
+    // LÓGICA DE SUBIDA DE IMAGEN 
     if (empty($mensaje)) {
         $nombre_imagen = "default.png"; // Imagen por defecto si el usuario no sube nada
 

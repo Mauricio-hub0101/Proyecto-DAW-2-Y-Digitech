@@ -42,7 +42,7 @@ include 'includes/header.php';
         <h2 class="fw-bold"><i class="bi text-warning me-2"></i>Últimas Novedades</h2>
         <a href="productos.php" class="text-decoration-none text-primary fw-bold">Ver todos &rarr;</a>
     </div>
-
+    <!-- lista de productos -->
     <div class="row">
         <?php
         // Traemos los 3 productos más recientes
