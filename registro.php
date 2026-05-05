@@ -9,6 +9,14 @@
             <div class="card shadow border-0">
                 <div class="card-body p-4">
                     <h2 class="text-center mb-4">Crear Cuenta</h2>
+                    <?php 
+                    // Si viene un error por la URL y es el de email_existe, mostramos la alerta
+                    if (isset($_GET['error']) && $_GET['error'] == 'email_existe'): 
+                    ?>
+                        <div class="alert alert-danger text-center">
+                            <strong>¡Atención!</strong> El email ya está registrado. Por favor, usa otro o inicia sesión.
+                        </div>
+                    <?php endif; ?>
                     <form action="procesar_registro.php" method="POST" id="formRegistro">
                         <div class="mb-3">
                             <label class="form-label">Nombre de Usuario</label>

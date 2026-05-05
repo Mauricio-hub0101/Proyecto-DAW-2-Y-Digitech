@@ -7,6 +7,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email_usuario  = mysqli_real_escape_string($conexion, $_POST['email']);
     $password_texto = $_POST['password'];
 
+    // Comprobación de email exixtente
+    $sql_check = "SELECT id_usuario FROM usuarios WHERE email = '$email_usuario'";
+    $resultado_check = mysqli_query($conexion, $sql_check);
+
+    if (mysqli_num_rows($resultado_check) > 0) {
+        // El email ya existe. Redirigimos de vuelta al registro con un error por la URL.
+        header("Location: registro.php?error=email_existe");
+        exit;
+    }
+    // Si no exixte, se procede con su registro
     // Encriptamos la contraseña
     $password_segura = password_hash($password_texto, PASSWORD_BCRYPT);
     
